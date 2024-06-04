@@ -4,96 +4,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/dash.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
-    <title>admin Panel</title>
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: #f7f9fc;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .dark-mode .sidebar {
+            background-color: #1f1f1f;
+        }
+
+        .dark-mode .sidebar ul li:hover {
+            background-color: #333;
+        }
+
+        .dark-mode .main {
+            background-color: #1f1f1f;
+        }
+
+        .dark-mode .card {
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+
+        .dark-mode .table-container {
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+
+        .dark-mode .table-container table th {
+            background-color: #333;
+        }
+
+        .dark-mode .table-container table tr:hover {
+            background-color: #444;
+        }
+
+        .dark-mode .btn {
+            background-color: #4a90e2;
+            color: #ffffff;
+        }
+
+        .dark-mode .btn:hover {
+            background-color: #357ab8;
+        }
+
+        .sidebar {
+            background-color: #2d3748;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .sidebar ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar ul li i {
+            margin-right: 1rem;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #4a5568;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .main {
+            flex-grow: 1;
+            padding: 2rem;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .top-bar .search {
+            position: relative;
+        }
+
+        .top-bar .search input {
+            padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 0.25rem;
+        }
+
+        .top-bar .search label {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .top-bar .user img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card .icon-box {
+            background-color: #4299e1;
+            padding: 1rem;
+            border-radius: 50%;
+            color: white;
+        }
+
+        .tables {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .table-container {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-container h2 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-container table th,
+        .table-container table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .table-container table th {
+            background-color: #f7fafc;
+            font-weight: 700;
+        }
+
+        .table-container table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        .table-container .btn {
+            background-color: #4299e1;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .table-container .btn:hover {
+            background-color: #3182ce;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="sidebar">
+    <div class="flex">
+        <div class="sidebar p-4">
             <ul>
- <li>
-                    <a href="/homead"></a>
-                    <i class="fas fa-clinic-medical"></i>
-                    <div class="title">Sérénithérapie</div>
-                </li>
-                 <li>
-                    <a href="#"></a>
-                    <i class="fas fa-user-md"></i>
-                    <div class="title">Doctors</div>
+                <li>
+                    <a href="/homead">
+                        <i class="fas fa-clinic-medical"></i>
+                        <span>Sérénithérapie</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="/dashbord"></a>
-                    <i class="fas fa-th-large"></i>
-                    <div class="title">Dashboard</div>
+                    <a href="#">
+                        <i class="fas fa-user-md"></i>
+                        <span>Doctors</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="/dashbordp"></a>
-                    <i class="fas fa-stethoscope"></i>
-                    <div class="title">Patient</div>
-               </li>
-
-                <li>
-                    <a href="#"></a>
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <div class="title">payement</div>
+                    <a href="/dashbord">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="/settings"></a>
-                    <i class="fas fa-cog"></i>
-                    
-                    <div class="title" >settings</div>
-                    
+                    <a href="/dashbordp">
+                        <i class="fas fa-stethoscope"></i>
+                        <span>Patient</span>
+                    </a>
                 </li>
-
+                <li>
+                    <a href="#">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <span>Payment</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="main">
             <div class="top-bar">
                 <div class="search">
-                    <input type="text" name="search" placeholder="search Here">
+                    <input type="text" name="search" placeholder="Search here">
                     <label for="search"><i class="fas fa-search"></i></label>
                 </div>
                 <i class="fas fa-bell"></i>
-                <div class="user"><img src="doctor1.png" alt="">
+                <div class="user">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541" alt="User">
                 </div>
+                <button id="dark-mode-toggle" class="ml-4 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 focus:outline-none">
+                    <i id="dark-mode-icon" class="fas fa-moon"></i>
+                </button>
             </div>
             <div class="cards">
                 <div class="card">
-                    <div class="card-content">
-                        <div class="number">67</div>
-                        <div class="card-name">Appointments</div>
+                    <div>
+                        <div class="number text-2xl font-bold">67</div>
+                        <div class="card-name text-lg">Appointments</div>
                     </div>
-                    <div class="icon-box"> <i class="fas fa briefcase-medical"></i></div>
+                    <div class="icon-box">
+                        <i class="fas fa-briefcase-medical"></i>
+                    </div>
                 </div>
                 <div class="card">
-                    <div class="card-content">
-                        <div class="number">105</div>
-                        <div class="card-name">New patients</div>
+                    <div>
+                        <div class="number text-2xl font-bold">105</div>
+                        <div class="card-name text-lg">New Patients</div>
                     </div>
-                    <div class="icon-box"> <i class="fas fa briefcase-medical"></i></div>
+                    <div class="icon-box">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
                 </div>
                 <div class="card">
-                    <div class="card-content">
-                        <div class="number">$4500</div>
-                        <div class="card-name">Earnings</div>
+                    <div>
+                        <div class="number text-2xl font-bold">$4500</div>
+                        <div class="card-name text-lg">Earnings</div>
                     </div>
-                    <div class="icon-box"> <i class="fas fa-dollar-sign"></i></div>
+                    <div class="icon-box">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
                 </div>
             </div>
             <div class="tables">
-                <div class="last-appointments">
-                    <div class="heading">
-                        <h2>Docteur liste</h2><a href="#" class="btn">View all</a>
+                <div class="table-container">
+                    <div class="heading flex justify-between items-center">
+                        <h2>Doctor List</h2>
+                        <a href="#" class="btn">View All</a>
                     </div>
                     <table class="appointments">
                         <thead>
-                            <td>Nom </td>
-                            <td>Prenom </td>
-                            <td>Specialite </td>
-                            <td>actions </td>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Specialite</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody>
                             {{#each details}}
@@ -101,22 +311,31 @@
                                 <td>{{nomDoc}}</td>
                                 <td>{{prenomDoc}}</td>
                                 <td>{{specialite}}</td>
-                                <td><a href="/deleted/{{idD}}" class="far fa-trash-alt"></a>
+                                <td>
+                                    <a href="/deleted/{{idD}}" class="far fa-trash-alt text-red-500"></a>
                                 </td>
                             </tr>
-                        {{/each}}
+                            {{/each}}
                         </tbody>
                     </table>
                 </div>
-                <div class="doctor-visiting">
-                    <div class="last-appointments">
-                        
-
-                    </div>
-                </div>
-
             </div>
         </div>
+    </div>
+
+    <script>
+        document.getElementById('dark-mode-toggle').addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.getElementById('dark-mode-icon');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
 </body>
 
 </html>

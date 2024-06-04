@@ -8,99 +8,132 @@
   <title>Sérénithérapie</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
       font-family: 'Rubik', sans-serif;
-      background-color: #f0f4f8;
+      background-color: #f7f9fc;
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    .navbar {
-      background-color: #fff;
-      color: #333;
-      border-bottom: 1px solid #e5e7eb;
+    .dark-mode {
+      background-color: #121212;
+      color: #ffffff;
     }
 
-    .navbar a {
-      color: #333;
+    .dark-mode .bg-white {
+      background-color: #1f1f1f;
     }
 
-    .navbar .btn {
-      background-color: #4299e1;
+    .dark-mode .text-gray-600 {
+      color: #bdbdbd;
     }
 
-    .content {
-      background-color: #fff;
+    .dark-mode .bg-gray-900 {
+      background-color: #1f1f1f;
     }
 
-    .content h3,
-    .content h4 {
-      color: #4a5568;
+    .dark-mode .bg-green-500 {
+      background-color: #4caf50;
     }
 
-    .content h4 {
-      font-weight: 300;
+    .dark-mode .bg-blue-500 {
+      background-color: #2196f3;
+    }
+
+    .dark-mode .hover\:bg-green-600:hover {
+      background-color: #388e3c;
+    }
+
+    .dark-mode .hover\:bg-blue-600:hover {
+      background-color: #1976d2;
+    }
+
+    .dark-mode .text-white {
+      color: #ffffff;
     }
   </style>
 </head>
 
 <body class="bg-gray-100 text-gray-800">
   <header>
-    <nav class="navbar p-4 shadow-sm flex justify-between items-center">
-      <div class="flex items-center space-x-4">
-        <a href="/home" class="text-xl font-medium">Sérénithérapie</a>
-        <div class="hidden md:flex items-center space-x-2">
-          <form class="flex items-center space-x-2">
-            <input class="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search" aria-label="Search">
-            <button class="px-4 py-2 bg-blue-500 rounded-full text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Search</button>
-          </form>
-          <a href="/home" class="hover:text-blue-500">Home</a>
-          <a href="/logout" class="hover:text-blue-500">Logout</a>
-        </div>
+    <nav class="bg-gray-900 text-white p-4 flex justify-between items-center">
+      <div>
+        <a href="/home" class="text-xl font-bold">Sérénithérapie</a>
       </div>
-      <button class="md:hidden" onclick="showSidebar()">
-        <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26" class="text-gray-800">
-          <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
-        </svg>
-      </button>
+      <div class="hidden md:flex space-x-4 items-center">
+        <form class="flex items-center space-x-2">
+          <input class="px-4 py-2 rounded border-none focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search" aria-label="Search">
+          <button class="px-4 py-2 bg-blue-500 rounded text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Search</button>
+        </form>
+        <a href="/home" class="text-white hover:text-blue-400">Home</a>
+        <a href="/logout" class="text-white hover:text-blue-400">Logout</a>
+        <button id="dark-mode-toggle" class="ml-4 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 focus:outline-none">Toggle Dark Mode</button>
+      </div>
+      <div class="md:hidden">
+        <button onclick="showSidebar()">
+          <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26" class="text-white">
+            <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
+          </svg>
+        </button>
+      </div>
     </nav>
   </header>
 
-  <div class="max-w-4xl mx-auto my-8 p-6 bg-white rounded-xl shadow-md">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="max-w-4xl mx-auto my-8 p-6 bg-white rounded-lg shadow-md">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
-        <h3 class="text-lg font-medium">Nom :</h3>
-        <h4 class="text-base">{{details.nom}} {{details.prenom}}</h4>
+        <h3 class="text-lg font-semibold">Nom :</h3>
+        <h4 class="text-base text-gray-600">{{details.nom}} {{details.prenom}}</h4>
       </div>
       <div>
-        <h3 class="text-lg font-medium">Spécialité:</h3>
-        <h4 class="text-base">{{details.specialite}}</h4>
-      </div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-      <div>
-        <h3 class="text-lg font-medium">Disponibilité:</h3>
-        <h4 class="text-base">{{details.date_exp}}</h4>
-      </div>
-      <div>
-        <h3 class="text-lg font-medium">Téléphone:</h3>
-        <h4 class="text-base">{{details.tel}}</h4>
+        <h3 class="text-lg font-semibold">Spécialité:</h3>
+        <h4 class="text-base text-gray-600">{{details.specialite}}</h4>
       </div>
     </div>
-    <div class="mt-8">
-      <h3 class="text-lg font-medium">Description de l'emploi:</h3>
-      <h4 class="text-base">{{details.jobDescription}}</h4>
-      <h3 class="text-lg font-medium mt-4">Prix :</h3>
-      <h4 class="text-base">{{details.prix}}</h4>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      <div>
+        <h3 class="text-lg font-semibold">Disponibilité:</h3>
+        <h4 class="text-base text-gray-600">{{details.date_exp}}</h4>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold">Téléphone:</h3>
+        <h4 class="text-base text-gray-600">{{details.tel}}</h4>
+      </div>
     </div>
-    <div class="flex justify-between mt-8">
-      <a href="/rendez" class="px-6 py-3 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 transition duration-300 ease-in-out transform hover:-translate-y-1">Réserve</a>
-      <a href="/meet" class="px-6 py-3 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 transition duration-300 ease-in-out transform hover:-translate-y-1">Rendez-vous</a>
+  </div>
+
+  <div class="max-w-4xl mx-auto my-8 p-6 bg-white rounded-lg shadow-md">
+    <h3 class="text-lg font-semibold">Description de l'emploi:</h3>
+    <h4 class="text-base text-gray-600">{{details.jobDescription}}</h4>
+    <h3 class="text-lg font-semibold mt-4">Prix :</h3>
+    <p class="text-base text-gray-600">{{details.prix}}</p>
+    <div class="flex justify-between mt-4">
+      <a href="/rendez" class="px-6 py-3 bg-green-500 text-white rounded hover:bg-green-600 transition duration-300 ease-in-out">Réserve</a>
+      <a href="/meet" class="px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300 ease-in-out">Rendez-vous</a>
     </div>
   </div>
 
   <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const toggleButton = document.getElementById('dark-mode-toggle');
+      const currentTheme = localStorage.getItem('theme');
+      
+      if (currentTheme) {
+        document.body.classList.add(currentTheme);
+      }
+
+      toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        let theme = 'light';
+        if (document.body.classList.contains('dark-mode')) {
+          theme = 'dark-mode';
+        }
+        localStorage.setItem('theme', theme);
+      });
+    });
+
     function showSidebar() {
       const sidebar = document.querySelector('.sidebar');
       sidebar.style.display = 'flex';
