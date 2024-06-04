@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/chat.css">
+    <title>Chat</title>
+</head>
+<body>
+<h1>Real Time Messaging</h1>
+<pre id="messages" ></pre>
+<input type="text" id="messageBox" placeholder="Type your message here"  />
+<button id="send" title="Send Message!" >Send Message</button>
+    <!-- end: Chat -->
+    
+    <script>
+        (function() {
+    const sendBtn = document.querySelector('#send');
+    const messages = document.querySelector('#messages');
+    const messageBox = document.querySelector('#messageBox');
+
+    let ws;
+
+    function showMessage(message) {
+      messages.textContent += `\n\n${message}`;
+      messages.scrollTop = messages.scrollHeight;
+      messageBox.value = '';
+    }
+
+    function init() {
+      if (ws) {
+        ws.onerror = ws.onopen = ws.onclose = null;
+        ws.close();
+      }
+
+      ws = new WebSocket('localhost:3000/chatDoc');
+      ws.onopen = () => {
+        console.log('Connection opened!');
+      }
+      ws.onmessage = ({ data }) => showMessage(data);
+      ws.onclose = function() {
+        ws = null;
+      }
+    }
+
+    sendBtn.onclick = function() {
+      if (!ws) {
+        showMessage("No WebSocket connection :(");
+        return ;
+      }
+
+      ws.send(messageBox.value);
+      showMessage(messageBox.value);
+    }
+
+    init();
+  })();
+
+    </script>
+</body>
+</html>

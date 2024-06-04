@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/dash.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <title>admin Panel</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="/homed"></a>
+                    <i class="fas fa-clinic-medical"></i>
+                    <div class="title">Sérénithérapie</div>
+                </li>
+                <li>
+                    <a href="/dashbordcon"></a>
+                    <i class="fas fa-th-large"></i>
+                    <div class="title">Consultation</div>
+                </li>
+                <li>
+                    <a href="/dashbordord"></a>
+                    <i class="fas fa-stethoscope"></i>
+                    <div class="title">Ordonnance</div>
+               </li>
+                <li>
+                    <a href="/dashbordrend"></a>
+                    <i class="fas fa-user-md"></i>
+                    <div class="title">Rendez-vous</div>
+                </li>
+                <li>
+                    <a href="/settings"></a>
+                    <i class="fas fa-cog"></i>
+                    
+                    <div class="title" >settings</div>
+                    
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="top-bar">
+                <div class="search">
+                    <input type="text" name="search" placeholder="search Here">
+                    <label for="search"><i class="fas fa-search"></i></label>
+                </div>
+                <i class="fas fa-bell"></i>
+                <div class="user"><img src="doctor1.png" alt="">
+                </div>
+            </div>
+            <div class="cards">
+                
+            </div>
+            <div class="tables">
+               <div class="last-appointments">
+                    <div class="heading">
+                        <h2>Rendez-vous liste</h2><a href="#" class="btn">View all</a>
+                    </div>
+                    <table class="appointments">
+                        <thead>
+                            <td>Nom </td>
+                            <td>Prenom </td>
+                            <td>Date Rendez-vous </td>
+                            <td>actions </td>
+                        </thead>
+                        <tbody>
+                            {{#each details}}
+                            <tr>
+                                <td>{{nomDoc}}</td>
+                                <td>{{prenomDoc}}</td>
+                                <td>{{dateR}}</td>
+                                <td><i class="far fa-eye"></i>
+                                    <i class="far fa-edit"></i>
+                                    <button><i class="far fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+</body>
+
+</html>

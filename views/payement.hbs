@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+               <meta charset="UTF-8">
+               <meta name="viewport" content="width=device-width, initial-scale=1.0">
+               <title>Document</title>
+<style>
+/* Conteneur principal */
+.container {
+    width: 100%;
+    max-width: 32rem; /* équivalent à max-w-lg */
+    margin: 0 auto;
+    padding: 2rem; /* équivalent à p-8 */
+}
+
+/* Carte de formulaire */
+.card {
+    background-color: #ffffff; /* bg-white */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    padding: 1.5rem; /* p-6 */
+}
+
+/* Titre du formulaire */
+.card h2 {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 500; /* font-medium */
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+/* Grille pour les champs de saisie */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* grid-cols-2 */
+    gap: 1.5rem; /* gap-6 */
+}
+
+/* Champs de saisie */
+.form-grid .input-group {
+    grid-column: span 2;
+}
+@media (min-width: 640px) {
+    .form-grid .input-group {
+        grid-column: span 1; /* sm:col-span-1 */
+    }
+}
+
+.label {
+    display: block;
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+    color: #4A5568; /* text-gray-700 */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.input {
+    width: 100%;
+    padding: 0.75rem 1rem; /* py-3 px-4 */
+    border: 1px solid #CBD5E0; /* border-gray-400 */
+    border-radius: 0.5rem; /* rounded-lg */
+    outline: none;
+}
+
+.input:focus {
+    border-color: #4299E1; /* focus:border-blue-500 */
+}
+
+/* Bouton de soumission */
+.submit-btn {
+    width: 100%;
+    background-color: #48BB78; /* bg-green-500 */
+    color: #ffffff;
+    font-weight: 500; /* font-medium */
+    padding: 0.75rem; /* py-3 */
+    border-radius: 0.5rem; /* rounded-lg */
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 2rem; /* mt-8 */
+}
+
+.submit-btn:hover {
+    background-color: #3182CE; /* hover:bg-blue-600 */
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h2>Payment Information</h2>
+        <form>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="card-number" class="label">Card Number</label>
+                    <input type="text" name="card-number" id="card-number" placeholder="0000 0000 0000 0000" class="input">
+                </div>
+                <div class="input-group">
+                    <label for="expiration-date" class="label">Expiration Date</label>
+                    <input type="text" name="expiration-date" id="expiration-date" placeholder="MM / YY" class="input">
+                </div>
+                <div class="input-group">
+                    <label for="cvv" class="label">CVV</label>
+                    <input type="text" name="cvv" id="cvv" placeholder="000" class="input">
+                </div>
+                <div class="input-group">
+                    <label for="card-holder" class="label">Card Holder</label>
+                    <input type="text" name="card-holder" id="card-holder" placeholder="Full Name" class="input">
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

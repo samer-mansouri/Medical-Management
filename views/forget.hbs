@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome Icons  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>Forgot Password UI</title>
+
+    <style>
+        /* Style de base pour le corps */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+/* Style pour la carte */
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Style pour l'icône de verrouillage */
+.lock-icon {
+    font-size: 3rem;
+    color: #2b93d8;
+    margin-bottom: 1rem;
+}
+
+.lock-icon i {
+    display: inline-block;
+}
+
+/* Style pour les titres et paragraphes */
+h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* Style pour l'input */
+.passInput {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style pour le bouton */
+button {
+    background-color: #2b93d8;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #2b93d8;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <p class="lock-icon"><i class="fas fa-lock"></i></p>
+        <h2>Forgot Password?</h2>
+        <p>You can reset your Password here</p>
+        <input type="text" class="passInput" placeholder="Email address">
+        <button>Send My Password</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styledesc.css" />
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/homed">Sérénithérapie</a></li>
+        <li class="hideOnMobile"><a href="/dashbordcon">Dashbord</a></li>
+         <li class="hideOnMobile"><a href="/adddesc">add job</a></li>
+        <li class="hideOnMobile"><a href="/ord">Ordonnance</a></li>
+        <li class="hideOnMobile"><a href="/consultation">Consultation</a></li>
+        <li class="hideOnMobile"><a href="/logout">logout</a></li>
+      </ul>
+    </nav>
+    <script>
+      function showSidebar() {
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'flex'
+      }
+      function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'none'
+      }
+    </script>
+  </header>
+  <div class="jobs-list-container">
+
+    <h2>Add New Ordonnance</h2>
+    <div class="jobs">
+      <div class="job">
+        <form action="/ord" method="post">
+          <div class="form-group">
+            <input type="text" id="nom" name="nom" placeholder="Nom" class="form-control">
+            <input type="text" id="prenom" name="prenom" placeholder="Prenom" class="form-control">
+          </div>
+          <div class="form-wrapper">
+            <label for="ordonnance">Ordonnance:</label>
+          </div>
+          <textarea id="ordonnance" name="ordonnance" rows="10" cols="120">
+
+            </textarea>
+
+      </div>
+
+      <button type="submit">ADD Ordonnance </button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  
+</body>
+
+</html>

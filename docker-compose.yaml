@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  mysql_zahed:
+    image: mysql:latest
+    container_name: mysql_custom
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: pfe
+      # Remove MYSQL_USER and MYSQL_PASSWORD for the root user
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  phpmyadmin_zahed:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_zahed
+    environment:
+      PMA_HOST: mysql_zahed
+      MYSQL_ROOT_PASSWORD: root_password_here
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql_zahed
+
+volumes:
+  mysql_data:

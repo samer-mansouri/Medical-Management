@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styledesc.css" />
+</head>
+
+<body>
+  <header>
+    <nav>
+
+      <ul>
+        <li><a href="/dashbord">Sérénithérapie</a></li>
+         <li class="hideOnMobile"><a href="/adddesc">add job</a></li>
+        <li class="hideOnMobile"><a href="/ord">Ordonnance</a></li>
+        <li class="hideOnMobile"><a href="/settings">Settings</a></li>
+        <li class="hideOnMobile"><a href="/logout">logout</a></li>
+      </ul>
+    </nav>
+    <script>
+      function showSidebar() {
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'flex'
+      }
+      function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'none'
+      }
+    </script>
+  </header>
+    <div class="jobs-list-container">
+
+    <h2> Edit Description</h2>
+    <div class="jobs">
+      <div class="job">
+        <form action="/updatedesc" method="post">
+          <h3>Edit Description </h3>
+          <div class="form-group">
+             <input type="text" id="nom" name="nom" placeholder="Nom" class="form-control">
+            <input type="text" id="prenom" name="prenom" placeholder="Prenom" class="form-control">
+          </div>
+  <div class="form-group"> 
+               <input type="number" id="tel" name="tel" placeholder="Telephone" class="form-control">  
+               <input type="number" id="prix" name="prix" placeholder="Prix" class="form-control">           
+         
+            <select name="specialite" id="specialite" class="form-control">
+              <option value="" disabled selected>Spécialite</option>
+              <option value="software-engineer.svg">Psychologues cliniciens</option>
+              <option value="data-scientist.svg">Psychologues du travail</option>
+              <option value="marketing-manager.svg">Psychologues scolaires</option>
+              <option value="project-manager.svg">Psychologues de l'enfant et de l'adolescent</option>
+              <option value="product-manager.svg">Psychologues de la santé</option>
+            </select>
+           <input type="text" id="date_exp" name="date_exp" placeholder="disponibilité" class="form-control">           
+
+          </div>
+
+
+          <div class="form-wrapper">
+            <label for="jobDescription">job Description:</label>
+          </div>
+          <textarea id="jobDescription" name="jobDescription" rows="15" cols="300">
+            
+            </textarea>
+
+
+
+      <button type="submit" > EDIT </button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+
+  <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Réserver une séance</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .btn-green:hover {
+        background-color: #3e8e41;
+        transition: background-color 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+   <h1 class="bg-green-500 text-white text-2xl p-2">Réserver une séance</h1>
+    <p class="max-w-xl mx-auto p-2">
+      Pour réserver une séance, veuillez cliquer sur le bouton "Réserver" ci-dessous et
+      sélectionner votre méthode de consultation préférée. Nous acceptons plusieurs
+      modes de paiement pour votre commodité.
+    </p>
+    <form action="/rendez" method="post" class="max-w-xl mx-auto p-2 bg-white shadow-md rounded">
+      <h2 class="text-xl font-bold mb-2">Horaire de séance</h2>
+      <div class="mb-2">
+        <label class="inline-flex items-center">
+          <input type="radio" name="dateR" value="9h-10h" required class="form-radio" />
+          <span class="ml-2">9h-10h</span>
+        </label>
+      </div>
+            <div class="mb-2">
+        <label class="inline-flex items-center">
+          <input type="radio" name="dateR" value="10h-11h" required class="form-radio" />
+          <span class="ml-2">10h-11h</span>
+        </label>
+      </div>
+            <div class="mb-2">
+        <label class="inline-flex items-center">
+          <input type="radio" name="dateR" value="11h-12h" required class="form-radio" />
+          <span class="ml-2">11h-12h</span>
+        </label>
+      </div>
+      <h2 class="text-xl font-bold mb-2">Mode de paiement</h2>
+      <div class="mb-2">
+        <label class="inline-flex items-center">
+          <input type="radio" name="payment" value="carte_de_credit" required class="form-radio" />
+          <span class="ml-2">Carte de crédit</span>
+        </label>
+      </div>
+      
+      <div class="mb-2">
+        <label class="inline-flex items-center">
+          <input type="radio" name="payment" value="virement_bancaire" required class="form-radio" />
+          <span class="ml-2">Virement bancaire</span>
+        </label>
+      </div>
+      <button type="submit"  class="bg-green-500 text-white py-2 px-4 rounded btn-green">
+        <a href="/payement">Fixer</a>
+      
+      </button>
+    </form>
+  </body>
+</html>

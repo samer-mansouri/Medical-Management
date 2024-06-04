@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/dash.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <title>admin Panel</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="/homead"></a>
+                    <i class="fas fa-clinic-medical"></i>
+                    <div class="title">Sérénithérapie</div>
+                </li>
+                 <li>
+                    <a href="#"></a>
+                    <i class="fas fa-user-md"></i>
+                    <div class="title">Doctors</div>
+                </li>
+                <li>
+                    <a href="/dashbordp"></a>
+                    <i class="fas fa-stethoscope"></i>
+                    <div class="title">Patient</div>
+               </li>
+
+                <li>
+                    <a href="#"></a>
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <div class="title">payement</div>
+                </li>
+                <li>
+                    <a href="/settings"></a>
+                    <i class="fas fa-cog"></i>
+                    
+                    <div class="title" >settings</div>
+                    
+                </li>
+
+            </ul>
+        </div>
+        <div class="main">
+            <div class="top-bar">
+                <div class="search">
+                    <input type="text" name="search" placeholder="search Here">
+                    <label for="search"><i class="fas fa-search"></i></label>
+                </div>
+                <i class="fas fa-bell"></i>
+                <div class="user"><img src="doctor1.png" alt="">
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">0</div>
+                        <div class="card-name">Appointments</div>
+                    </div>
+                    <div class="icon-box"> <i class="fas fa briefcase-medical"></i></div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">0</div>
+                        <div class="card-name">New patients</div>
+                    </div>
+                    <div class="icon-box"> <i class="fas fa briefcase-medical"></i></div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">0</div>
+                        <div class="card-name">Earnings</div>
+                    </div>
+                    <div class="icon-box"> <i class="fas fa-dollar-sign"></i></div>
+                </div>
+            </div>
+            <div class="tables">
+                <div class="last-appointments">
+                    <div class="heading">
+                        <h2>Patient liste</h2><a href="#" class="btn">View all</a>
+                    </div>
+                    <table class="appointments">
+                        <thead>
+                            <td>Nom </td>
+                            <td>Prenom </td>
+                            <td>Mail </td>
+                            <td>actions </td>
+                        </thead>
+                        <tbody>
+                            {{#each details}}
+                            <tr>
+                                <td>{{nomP}}</td>
+                                <td>{{prenomP}}</td>
+                                <td>{{mailP}}</td>
+                                <td> 
+                                    <a href="/deletep/{{idP}}" class="far fa-trash-alt"></a>
+                                </td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="doctor-visiting">
+                    <div class="last-appointments">
+                        
+            </div>
+        </div>
+</body>
+
+</html>

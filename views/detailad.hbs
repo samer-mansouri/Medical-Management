@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/details.css" />
+  </head>
+  <header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/home">Sérénithérapie</a></li>
+            <li class="hideOnMobile">
+                <form class="sr">
+                    <input class="search" placeholder="Search" aria-label="Search">
+                    <button class="btn" type="submit">Search</button>
+                </form>
+            </li>
+            <li class="hideOnMobile"><a href="/homead">Home</a></li>
+            <li class="hideOnMobile"><a href="/logout">Logout</a></li>
+            <li class="menu-button" onclick="showSidebar()">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a>
+            </li>
+        </ul>
+    </nav>
+    <script>
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'flex';
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'none';
+        }
+    </script>
+</header>
+<div class="divheader">
+    <div class="grid-container">
+        <div class="grid-item">
+            <h3>Nom :</h3>
+            <h4>{{details.nom}} {{details.prenom}}</h4></div>
+        <div class="grid-item">
+            <h3>Spécialité:</h3>
+            <h4>{{details.specialite}}</h4>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="grid-item">
+            <h3>Disponibilité:</h3>
+            <h4>{{details.date_exp}}</h4>
+        </div>
+        <div class="grid-item">
+            <h3>Téléphone:</h3>
+            <h3>{{details.tel}}</h3>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <h3>Description de l'emploi:</h3>
+    <h3>{{details.jobDescription}}</h3>
+    <h3>Prix :</h3>
+    <p>{{details.prix}}</p>
+
+</div>
+
+</html>
+

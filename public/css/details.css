@@ -1,0 +1,137 @@
+/* Style de base pour le header et la navigation */
+header {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.navbar .sr {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .search {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+.navbar .btn {
+  background-color: #2372da;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.navbar .btn:hover {
+  background-color: #2372da;
+}
+
+.hideOnMobile {
+  display: block;
+}
+
+.menu-button {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-button svg {
+  fill: #333;
+}
+
+/* Styles pour le conteneur principal */
+.divheader {
+  padding: 1rem;
+}
+
+/* Styles pour la grille */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+}
+
+h3, h4 {
+  margin: 0.5rem 0;
+}
+
+/* Contenu de la description de l'emploi */
+.content {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 0.5rem;
+}
+
+/* Boutons */
+.button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.button {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button.fixe {
+  background-color: rgb(31, 161, 31);
+}
+
+.button.rendez-vous {
+  background-color: #0056b3;
+}
+
+.button a {
+  color: white;
+  text-decoration: none;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hideOnMobile {
+      display: none;
+  }
+
+  .menu-button {
+      display: block;
+  }
+}

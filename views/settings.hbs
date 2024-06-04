@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+      rel="stylesheet" />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
+        <nav>
+      <ul class="sidebar">
+        <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960"
+              width="26">
+              <path
+                d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
+            </svg></a></li>
+        <li><a href="/dashboard">dashboard</a></li>
+        <li><a href="/addjob">add job</a></li>
+        <li><a href="/logout">logout</a></li>
+      </ul>
+      <ul>
+        <li><a href="/home">Sérénithérapie</a></li>
+        <li class="hideOnMobile"><a href="/dashbordcon">Dashbord</a></li>
+         <li class="hideOnMobile"><a href="/adddesc">add job</a></li>
+        <li class="hideOnMobile"><a href="/ord">Ordonnance</a></li>
+        <li class="hideOnMobile"><a href="/consultation">Consultation</a></li>
+        <li class="hideOnMobile"><a href="/logout">logout</a></li>
+      </ul>
+    </nav>
+        <script>
+      function showSidebar() {
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'flex'
+      }
+      function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'none'
+      }
+    </script>
+</header>
+<body>
+    <div class="container p-0">
+<div class="row">
+<div class="col-md-5 col-xl-4">
+<div class="card">
+<div class="card-header">
+<div class="card-body">
+<div class="form-group">
+<div class="card">
+<div class="card-header">
+
+<h5 class="card-title mb-0">Private info</h5>
+</div>
+<div class="card-body">
+<form action="/settings" method="post">
+<div class="form-row">
+<div class="form-group col-md-6">
+<label for="nom">Nom</label>
+<input type="text" name="nom" placeholder="nom" class="form-control">
+</div>
+<div class="form-group col-md-6">
+<label for="prenom">Prenom</label>
+<input type="text" name="prenom" id="prenom" placeholder="Prenom" class="form-control">
+</div>
+</div>
+<div class="form-group">
+<label for="address">Address</label>
+<input type="text" name="address" id="address" placeholder="Address" class="form-control">
+</div>
+<div class="form-group">
+<label for="mail">Email</label>
+<input type="email" name="mail" id="mail" placeholder="Email" class="form-control">
+</div>
+
+<label for="inputPasswordCurrent">Current password</label>
+<input type="password" class="form-control" id="inputPasswordCurrent">
+</div>
+<div class="form-group">
+<label for="inputPasswordNew">New password</label>
+<input type="password"  id="inputPasswordNew" class="form-control">
+</div>
+<div class="form-group">
+<label for="inputPasswordNew2">Verify password</label>
+<input type="password"  id="inputPasswordNew2 "class="form-control">
+</div>
+<button type="submit" class="btn btn-primary">Save changes</button>
+
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div> 
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="sidebar">
+          <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+          <li><form class="sr">
+            <input class="search"  placeholder="Search" aria-label="Search">
+            <button class="btn" type="submit">Search</button>
+          </form></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+        <ul>
+          <li><a href="/">Sérénithérapie</a></li>
+          <li class="hideOnMobile"> <form class="sr">
+            <input class="search"  placeholder="Search" aria-label="Search">
+            <button class="btn" type="submit">Search</button>
+          </form></li>
+          <li class="hideOnMobile"><a href="/homead">Home</a></li>
+          <li class="hideOnMobile"><a href="/dashbord">Dashboard</a></li>
+          <li class="hideOnMobile"><a href="/logout">Logout</a></li>
+        </ul>
+      </nav>
+      <script>
+        function showSidebar(){
+          const sidebar = document.querySelector('.sidebar')
+          sidebar.style.display = 'flex'
+        }
+        function hideSidebar(){
+          const sidebar = document.querySelector('.sidebar')
+          sidebar.style.display = 'none'
+        }
+      </script>
+  </header>
+    <div class="jobs-list-container">
+        <div class="jobs">
+          {{#each details}}
+          <div class="job">
+            <img src="images/<%= job.field %>" alt="ERREUR">
+            <h3 class="job-title"><h3> {{nom}} {{prenom}}</h3></h3>
+            <div class="details"> 
+     <h3>{{specialite}}</h3>
+            </div>
+            <a href="/detailad/{{idD}}" class="details-btn">More Details</a>
+          </div>
+          {{/each}}
+        </div>
+    </div>
+  </body>
+</html>
+
