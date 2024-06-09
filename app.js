@@ -498,6 +498,21 @@ db.query(sql, values, (err, result) => {
     res.redirect('/dashbordcon'); // Redirect to dashboard after successfully adding the job
 });
 });
+
+app.get('/mrdv/:id', (req, res) => {
+  // Render the editRdv.ejs file with the provided id
+  res.render('mrdv', { id: req.params.id });
+});
+
+// POST endpoint to handle the form submission and update the rendez-vous record
+app.post('/mrdv/:id', (req, res) => {
+  // Retrieve the data from the form submission (nomDoc, prenomDoc, dateR)
+  const { nomDoc, prenomDoc, dateR } = req.body;
+  
+  // Update the rendez-vous record with the provided id using the retrieved data
+
+  // Redirect to a page indicating success or back to the edit page with an error message if the update fails
+});
 // Route to handle updating a patient
 app.post('/settings/:id', (req, res) => {
 // Get the job ID from the URL parameters
@@ -725,6 +740,36 @@ app.get('/deletep/:id', (req, res) => {
           res.redirect('/dashbord'); // Redirect to dashboard after successfully adding the job
       });
       });
+    // GET route to display the edit form
+app.get('/editd/:id', (req, res) => {
+  // Fetch the doctor details based on the id
+  const doctor = { id: 1, name: 'Dr. John Doe', speciality: 'General Physician', address: '123, XYZ Street, ABC City', phone: '1234567890' };
+  res.render('editDoctor', { doctor });
+});
+
+// POST route to update the doctor details
+app.post('/editd/:id', (req, res) => {
+  // Update the doctor details in the database
+  // Redirect to the main doctor list page after updating
+  res.redirect('/dashbord');
+});
+
+app.get('/editPat/:id', (req, res) => {
+  // Fetch patient data based on the provided ID (req.params.id)
+  // Render the edit form with the fetched data
+  const patient =  { id: 1, name: 'Dr. John Doe', speciality: 'General Physician', address: '123, XYZ Street, ABC City', phone: '1234567890' };
+  res.render('editPat', { patient });
+});
+
+// POST endpoint to handle the form submission
+app.post('/editPat/:id', (req, res) => {
+  const { id } = req.params;
+  const { nom, prenom, dateC } = req.body;
+
+  // Update patient data in the database based on the provided ID and form data
+  // Redirect to a confirmation page or the updated patient details page
+  res.redirect(`/dashbordp`);
+});
   app.post('/rendez', (req, res) => {
     const { dateR } = req.body;
 
@@ -804,6 +849,7 @@ app.get('/dashbordp', (req, res) => {
       res.render('./dashbordp', { details: results }); // Assuming there's only one result
     });
 });
+
 app.get('/dashbordcon', (req, res) => {
   db.query('SELECT * FROM consultation  ',  (err, results) => {
       if (err) {

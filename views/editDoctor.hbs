@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Doctor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styledesc.css">
+    <style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: #f7f9fc;
+        }
+
+        .jobs-list-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jobs-list-container">
+        <h2>Edit Doctor</h2>
+        <div class="jobs">
+            <div class="job">
+                <form action="/mcon" method="post">
+                    <div class="form-group">
+                        <input type="text" id="nom" name="nom" placeholder="Nom" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="prenom" name="prenom" placeholder="Prenom" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="specialite" name="specialite" placeholder="Specialite" class="form-control" required>
+                    </div>
+                    <button type="submit">Edit Doctor</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
