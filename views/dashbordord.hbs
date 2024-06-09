@@ -4,69 +4,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/dash.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
-    <title>admin Panel</title>
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: #f7f9fc;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .dark-mode .sidebar {
+            background-color: #1f1f1f;
+        }
+
+        .dark-mode .sidebar ul li:hover {
+            background-color: #333;
+        }
+
+        .dark-mode .main {
+            background-color: #1f1f1f;
+        }
+
+        .dark-mode .card {
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+
+        .dark-mode .table-container {
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+
+        .dark-mode .table-container table th {
+            background-color: #333;
+        }
+
+        .dark-mode .table-container table tr:hover {
+            background-color: #444;
+        }
+
+        .dark-mode .btn {
+            background-color: #4a90e2;
+            color: #ffffff;
+        }
+
+        .dark-mode .btn:hover {
+            background-color: #357ab8;
+        }
+
+        .sidebar {
+            background-color: #2d3748;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .sidebar ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar ul li i {
+            margin-right: 1rem;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #4a5568;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .main {
+            flex-grow: 1;
+            padding: 2rem;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .top-bar .search {
+            position: relative;
+        }
+
+        .top-bar .search input {
+            padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 0.25rem;
+        }
+
+        .top-bar .search label {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .top-bar .user img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card .icon-box {
+            background-color: #4299e1;
+            padding: 1rem;
+            border-radius: 50%;
+            color: white;
+        }
+
+        .tables {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .table-container {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-container h2 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-container table th,
+        .table-container table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .table-container table th {
+            background-color: #f7fafc;
+            font-weight: 700;
+        }
+
+        .table-container table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        .table-container .btn {
+            background-color: #4299e1;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .table-container .btn:hover {
+            background-color: #3182ce;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-         <div class="sidebar">
+    <div class="flex">
+        <div class="sidebar p-4">
             <ul>
                 <li>
-                    <a href="/homed"></a>
-                    <i class="fas fa-clinic-medical"></i>
-                    <div class="title">Sérénithérapie</div>
+                    <a href="/homed">
+                        <i class="fas fa-clinic-medical"></i>
+                        <span>Sérénithérapie</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="/dashbordcon"></a>
-                    <i class="fas fa-th-large"></i>
-                    <div class="title">Consultation</div>
+                    <a href="/dashbordcon">
+                        <i class="fas fa-th-large"></i>
+                        <span>Consultation</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="/dashbordord"></a>
-                    <i class="fas fa-stethoscope"></i>
-                    <div class="title">Ordonnance</div>
-               </li>
-                <li>
-                    <a href="/dashbordrend"></a>
-                    <i class="fas fa-user-md"></i>
-                    <div class="title">Rendez-vous</div>
+                    <a href="/dashbordord">
+                        <i class="fas fa-stethoscope"></i>
+                        <span>Ordonnance</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="/settings"></a>
-                    <i class="fas fa-cog"></i>
-                    
-                    <div class="title" >settings</div>
-                    
+                    <a href="/dashbordrend">
+                        <i class="fas fa-user-md"></i>
+                        <span>Rendez-vous</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
                 </li>
             </ul>
         </div>
         <div class="main">
             <div class="top-bar">
                 <div class="search">
-                    <input type="text" name="search" placeholder="search Here">
+                    <input type="text" name="search" placeholder="Search here">
                     <label for="search"><i class="fas fa-search"></i></label>
                 </div>
                 <i class="fas fa-bell"></i>
-                <div class="user"><img src="doctor1.png" alt="">
+                <div class="user">
+                    <img src="doctor1.png" alt="">
                 </div>
+                <button id="dark-mode-toggle" class="ml-4 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 focus:outline-none">
+                    <i id="dark-mode-icon" class="fas fa-moon"></i>
+                </button>
             </div>
             <div class="cards">
-                
+                <!-- Add your cards here if needed -->
             </div>
             <div class="tables">
-                <div class="last-appointments">
-                    <div class="heading">
-                        <h2>Ordonnance liste</h2><a href="#" class="btn">View all</a>
+                <div class="table-container">
+                    <div class="heading flex justify-between items-center">
+                        <h2>Ordonnance Liste</h2>
+                        <a href="#" class="btn">View all</a>
                     </div>
-                    <table class="appointments">
+                    <table>
                         <thead>
-                            <td>Nom </td>
-                            <td>Prenom </td>
-                            <td>Ordonnance</td>
-                            <td>actions </td>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Ordonnance</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody>
                             {{#each details}}
@@ -79,14 +284,22 @@
                                     <a href="/deleteord/{{idO}}" class="far fa-trash-alt"></a>
                                 </td>
                             </tr>
-                        {{/each}}
+                            {{/each}}
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
         </div>
+    </div>
+    <script>
+        document.getElementById('dark-mode-toggle').addEventListener('click', function () {
+            const body = document.body;
+            const icon = document.getElementById('dark-mode-icon');
+            body.classList.toggle('dark-mode');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        });
+    </script>
 </body>
 
 </html>

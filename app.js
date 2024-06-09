@@ -17,8 +17,8 @@ const { auth } = require('google-auth-library');
 const db = mysql.createConnection({
 	host: '127.0.0.1',
 	user: 'root',
-	password: '123456',
-	database: 'zahed',
+	password: 'password',
+	database: 'pfe',
   port: 3306,
 });
 
