@@ -824,64 +824,64 @@ app.get('/logind', (req, res) => {
 	res.render('logind');
 });
 app.get('/dashbord', (req, res) => {
+
     // count for those tables patient , docteur , consultation , rendezvous , ordonnace
 
     const count = {
-        patient: 0,
-        docteur: 0,
-        consultation: 0,
-        rendezvous: 0,
-        ordonnace: 0,
-    };
-    db.query('SELECT COUNT(*) AS patient FROM patient', (err, results) => {
-      if (err) {
-          console.error('Error fetching job details from database:', err);
-          res.status(500).send('Error fetching job details');
-          return;
-      }
-      count.patient = results[0].patient;
-  });
+      patient: 0,
+      docteur: 0,
+      consultation: 0,
+      rendezvous: 0,
+      ordonnace: 0,
+  };
+  db.query('SELECT COUNT(*) AS patient FROM patient', (err, results) => {
+    if (err) {
+        console.error('Error fetching job details from database:', err);
+        res.status(500).send('Error fetching job details');
+        return;
+    }
+    count.patient = results[0].patient;
+});
 
 
-    db.query('SELECT COUNT(*) AS docteur FROM docteur', (err, results) => {
-      if (err) {
-          console.error('Error fetching job details from database:', err);
-          res.status(500).send('Error fetching job details');
-          return;
-      }
-      count.docteur = results[0].docteur;
-  });
+  db.query('SELECT COUNT(*) AS docteur FROM docteur', (err, results) => {
+    if (err) {
+        console.error('Error fetching job details from database:', err);
+        res.status(500).send('Error fetching job details');
+        return;
+    }
+    count.docteur = results[0].docteur;
+});
 
-  db.query('SELECT COUNT(*) AS consultation FROM consultation', (err, results) => {
-      if (err) {
-          console.error('Error fetching job details from database:', err);
-          res.status(500).send('Error fetching job details');
-          return;
-      }
-      count.consultation = results[0].consultation;
-  });
+db.query('SELECT COUNT(*) AS consultation FROM consultation', (err, results) => {
+    if (err) {
+        console.error('Error fetching job details from database:', err);
+        res.status(500).send('Error fetching job details');
+        return;
+    }
+    count.consultation = results[0].consultation;
+});
 
-  db.query('SELECT COUNT(*) AS rendezvous FROM rendezvous', (err, results) => {
-      if (err) {
-          console.error('Error fetching job details from database:', err);
-          res.status(500).send('Error fetching job details');
-          return;
-      }
-      count.rendezvous = results[0].rendezvous;
-  });
+db.query('SELECT COUNT(*) AS rendezvous FROM rendezvous', (err, results) => {
+    if (err) {
+        console.error('Error fetching job details from database:', err);
+        res.status(500).send('Error fetching job details');
+        return;
+    }
+    count.rendezvous = results[0].rendezvous;
+});
 
-  db.query('SELECT COUNT(*) AS ordonnace FROM ordonnace', (err, results) => {
-      if (err) {
-          console.error('Error fetching job details from database:', err);
-          res.status(500).send('Error fetching job details');
-          return;
-      }
-      count.ordonnace = results[0].ordonnace;
+db.query('SELECT COUNT(*) AS ordonnace FROM ordonnace', (err, results) => {
+    if (err) {
+        console.error('Error fetching job details from database:', err);
+        res.status(500).send('Error fetching job details');
+        return;
+    }
+    count.ordonnace = results[0].ordonnace;
 
-      // Now you can use the count object with the updated counts
-      console.log(count);
-  });
-
+    // Now you can use the count object with the updated counts
+    console.log(count);
+});
 
 
 
@@ -894,7 +894,7 @@ app.get('/dashbord', (req, res) => {
         
         
         // Render the 'details' template with the fetched data
-        res.render('./dashbord', { details: results }); // Assuming there's only one result
+        res.render('./dashbord', { details: results, stats: count }); // Assuming there's only one result
       });
 });
 app.get('/dashbordp', (req, res) => {
