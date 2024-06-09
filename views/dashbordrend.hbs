@@ -255,8 +255,34 @@
                     <i id="dark-mode-icon" class="fas fa-moon"></i>
                 </button>
             </div>
-            <div class="cards">
-                <!-- Add your cards here if needed -->
+             <div class="cards">
+                <div class="card">
+                    <div>
+                        <div class="number text-2xl font-bold">{{stats.rendezvous}}</div>
+                        <div class="card-name text-lg">Appointments</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-briefcase-medical"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="number text-2xl font-bold">{{stats.ordonnace}}</div>
+                        <div class="card-name text-lg">Prescriptions</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="number text-2xl font-bold">{{stats.consultation}}</div>
+                        <div class="card-name text-lg">Consultations</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                </div>
             </div>
             <div class="tables">
                 <div class="table-container">
@@ -267,8 +293,8 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Nom</th>
-                                <th>Prenom</th>
+                                {{!-- <th>Nom</th>
+                                <th>Prenom</th> --}}
                                 <th>Date Rendez-vous</th>
                                 <th>Actions</th>
                             </tr>
@@ -276,8 +302,8 @@
                         <tbody>
                             {{#each details}}
                             <tr>
-                                <td>{{nomDoc}}</td>
-                                <td>{{prenomDoc}}</td>
+                                {{!-- <td>{{nomDoc}}</td>
+                                <td>{{prenomDoc}}</td> --}}
                                 <td>{{dateR}}</td>
                                 <td>
                                     <a href="/mrdv/{{idR}}" class="far fa-edit"></a>

@@ -233,12 +233,12 @@
                         <span>Patient</span>
                     </a>
                 </li>
-                <li>
+                {{!-- <li>
                     <a href="#">
                         <i class="fas fa-hand-holding-usd"></i>
                         <span>Payment</span>
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="/settings">
                         <i class="fas fa-cog"></i>
@@ -264,7 +264,7 @@
             <div class="cards">
                 <div class="card">
                     <div>
-                        <div class="number text-2xl font-bold">67</div>
+                        <div class="number text-2xl font-bold">{{stats.rendezvous}}</div>
                         <div class="card-name text-lg">Appointments</div>
                     </div>
                     <div class="icon-box">
@@ -273,20 +273,20 @@
                 </div>
                 <div class="card">
                     <div>
-                        <div class="number text-2xl font-bold">105</div>
-                        <div class="card-name text-lg">New Patients</div>
+                        <div class="number text-2xl font-bold">{{stats.patient}}</div>
+                        <div class="card-name text-lg">Patients</div>
                     </div>
                     <div class="icon-box">
                         <i class="fas fa-user-plus"></i>
                     </div>
                 </div>
-                <div class="card">
+                 <div class="card">
                     <div>
-                        <div class="number text-2xl font-bold">$4500</div>
-                        <div class="card-name text-lg">Earnings</div>
+                        <div class="number text-2xl font-bold">{{stats.docteur}}</div>
+                        <div class="card-name text-lg">Doctors</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fas fa-dollar-sign"></i>
+                        <i class="fas fa-user"></i>
                     </div>
                 </div>
             </div>

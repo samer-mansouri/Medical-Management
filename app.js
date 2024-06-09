@@ -44,6 +44,66 @@ CREDENTIALS_INCORRECT: "credentialsincorrect",
 PASSWORD_INCORRECT: "passwordincorrect",
 };
 
+const statsFunc = async () => {
+  const count = {
+    patient: 0,
+    docteur: 0,
+    consultation: 0,
+    rendezvous: 0,
+    ordonnace: 0,
+};
+db.query('SELECT COUNT(*) AS patient FROM patient', (err, results) => {
+  if (err) {
+      console.error('Error fetching job details from database:', err);
+      res.status(500).send('Error fetching job details');
+      return;
+  }
+  count.patient = results[0].patient;
+});
+
+
+db.query('SELECT COUNT(*) AS docteur FROM docteur', (err, results) => {
+  if (err) {
+      console.error('Error fetching job details from database:', err);
+      res.status(500).send('Error fetching job details');
+      return;
+  }
+  count.docteur = results[0].docteur;
+});
+
+db.query('SELECT COUNT(*) AS consultation FROM consultation', (err, results) => {
+  if (err) {
+      console.error('Error fetching job details from database:', err);
+      res.status(500).send('Error fetching job details');
+      return;
+  }
+  count.consultation = results[0].consultation;
+});
+
+db.query('SELECT COUNT(*) AS rendezvous FROM rendezvous', (err, results) => {
+  if (err) {
+      console.error('Error fetching job details from database:', err);
+      res.status(500).send('Error fetching job details');
+      return;
+  }
+  count.rendezvous = results[0].rendezvous;
+});
+
+db.query('SELECT COUNT(*) AS ordonnace FROM ordonnace', (err, results) => {
+  if (err) {
+      console.error('Error fetching job details from database:', err);
+      res.status(500).send('Error fetching job details');
+      return;
+  }
+  count.ordonnace = results[0].ordonnace;
+
+  // Now you can use the count object with the updated counts
+  console.log(count);
+});
+
+ return count;
+}
+
 // Middleware for handling errors
 app.use((req, res, next) => {
 try {
@@ -823,68 +883,10 @@ app.get('/login', (req, res) => {
 app.get('/logind', (req, res) => {
 	res.render('logind');
 });
-app.get('/dashbord', (req, res) => {
+app.get('/dashbord', async (req, res) => {
 
-    // count for those tables patient , docteur , consultation , rendezvous , ordonnace
-
-    const count = {
-      patient: 0,
-      docteur: 0,
-      consultation: 0,
-      rendezvous: 0,
-      ordonnace: 0,
-  };
-  db.query('SELECT COUNT(*) AS patient FROM patient', (err, results) => {
-    if (err) {
-        console.error('Error fetching job details from database:', err);
-        res.status(500).send('Error fetching job details');
-        return;
-    }
-    count.patient = results[0].patient;
-});
-
-
-  db.query('SELECT COUNT(*) AS docteur FROM docteur', (err, results) => {
-    if (err) {
-        console.error('Error fetching job details from database:', err);
-        res.status(500).send('Error fetching job details');
-        return;
-    }
-    count.docteur = results[0].docteur;
-});
-
-db.query('SELECT COUNT(*) AS consultation FROM consultation', (err, results) => {
-    if (err) {
-        console.error('Error fetching job details from database:', err);
-        res.status(500).send('Error fetching job details');
-        return;
-    }
-    count.consultation = results[0].consultation;
-});
-
-db.query('SELECT COUNT(*) AS rendezvous FROM rendezvous', (err, results) => {
-    if (err) {
-        console.error('Error fetching job details from database:', err);
-        res.status(500).send('Error fetching job details');
-        return;
-    }
-    count.rendezvous = results[0].rendezvous;
-});
-
-db.query('SELECT COUNT(*) AS ordonnace FROM ordonnace', (err, results) => {
-    if (err) {
-        console.error('Error fetching job details from database:', err);
-        res.status(500).send('Error fetching job details');
-        return;
-    }
-    count.ordonnace = results[0].ordonnace;
-
-    // Now you can use the count object with the updated counts
-    console.log(count);
-});
-
-
-
+    // count for those tables patient , docteur , consultation , rendezvous , ordonnac
+    const count = await statsFunc();
     db.query('SELECT * FROM docteur  ',  (err, results) => {
         if (err) {
           console.error('Error fetching job details from database:', err);
@@ -897,7 +899,10 @@ db.query('SELECT COUNT(*) AS ordonnace FROM ordonnace', (err, results) => {
         res.render('./dashbord', { details: results, stats: count }); // Assuming there's only one result
       });
 });
-app.get('/dashbordp', (req, res) => {
+app.get('/dashbordp', async (req, res) => {
+
+  const stats = await statsFunc();
+
   db.query('SELECT * FROM patient  ',  (err, results) => {
       if (err) {
         console.error('Error fetching job details from database:', err);
@@ -907,11 +912,14 @@ app.get('/dashbordp', (req, res) => {
       
       
       // Render the 'details' template with the fetched data
-      res.render('./dashbordp', { details: results }); // Assuming there's only one result
+      res.render('./dashbordp', { details: results, stats: stats }); // Assuming there's only one result
     });
 });
 
-app.get('/dashbordcon', (req, res) => {
+app.get('/dashbordcon', async (req, res) => {
+
+  const stats = await statsFunc();
+
   db.query('SELECT * FROM consultation  ',  (err, results) => {
       if (err) {
         console.error('Error fetching job details from database:', err);
@@ -920,10 +928,13 @@ app.get('/dashbordcon', (req, res) => {
       }
       
       // Render the 'details' template with the fetched data
-      res.render('./dashbordcon', { details: results }); // Assuming there's only one result
+      res.render('./dashbordcon', { details: results, stats: stats }); // Assuming there's only one result
     });
 });
-app.get('/dashbordrend', (req, res) => {
+app.get('/dashbordrend', async (req, res) => {
+
+  const stats = await statsFunc();
+
   db.query('SELECT * FROM rendezvous ',  (err, results) => {
       if (err) {
         console.error('Error fetching job details from database:', err);
@@ -933,10 +944,12 @@ app.get('/dashbordrend', (req, res) => {
       
       
       // Render the 'details' template with the fetched data
-      res.render('./dashbordrend', { details: results }); // Assuming there's only one result
+      res.render('./dashbordrend', { details: results, stats: stats }); // Assuming there's only one result
     });
 });
-app.get('/dashbordord', (req, res) => {
+app.get('/dashbordord', async (req, res) => {
+
+  const stats = await statsFunc();
   db.query('SELECT * FROM ordonnace  ',  (err, results) => {
       if (err) {
         console.error('Error fetching job details from database:', err);
@@ -946,7 +959,7 @@ app.get('/dashbordord', (req, res) => {
       
       
       // Render the 'details' template with the fetched data
-      res.render('./dashbordord', { details: results }); // Assuming there's only one result
+      res.render('./dashbordord', { details: results, stats: stats }); // Assuming there's only one result
     });
 });
 app.get('/settings', (req, res) => {
