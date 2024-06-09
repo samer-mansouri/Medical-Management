@@ -12,13 +12,15 @@ const process = require('process');
 const {authenticate} = require('@google-cloud/local-auth');
 const {SpacesServiceClient} = require('@google-apps/meet').v2;
 const { auth } = require('google-auth-library');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Set up the database connection
 const db = mysql.createConnection({
 	host: '127.0.0.1',
-	user: 'root',
-	password: 'password',
-	database: 'pfe',
+	user: process.env.DB_USER,
+	password: process.env.DB_PASS,
+	database: process.env.DB_NAME,
   port: 3306,
 });
 
