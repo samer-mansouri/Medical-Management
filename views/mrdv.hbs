@@ -58,16 +58,19 @@
         <h2>Edit Rendez-vous</h2>
         <div class="jobs">
             <div class="job">
-                <form action="/mrdv/{{id}}" method="post">
-                    <div class="form-group">
+                <form action="/mrdv" method="post">
+                    {{!-- <div class="form-group">
                         <input type="text" id="nomDoc" name="nomDoc" placeholder="Nom" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <input type="text" id="prenomDoc" name="prenomDoc" placeholder="Prenom" class="form-control" required>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
-                        <input type="datetime-local" id="dateR" name="dateR" class="form-control" required>
+                        <input type="datetime-local" id="dateR" name="dateR" class="form-control" 
+                            value="{{details.dateR}}"
+                        required>
                     </div>
+                    <input type="hidden" id="id" name="id" value="{{details.idR}}">
                     <button type="submit">Edit Rendez-vous</button>
                 </form>
             </div>

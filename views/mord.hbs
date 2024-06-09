@@ -67,14 +67,22 @@
         <h2>Edit Ordonnance</h2>
         <div class="jobs">
             <div class="job">
-                <form action="/mord/:id" method="post">
+                <form action="/mord" method="post">
                     <div class="form-group">
-                        <input type="text" id="nom" name="nom" placeholder="Nom" class="form-control">
-                        <input type="text" id="prenom" name="prenom" placeholder="Prenom" class="form-control">
+                        <input type="text" id="nom" name="nom" placeholder="Nom" class="form-control"
+                            value="{{details.nom}}">
+                        
+                        <input type="text" id="prenom" name="prenom" placeholder="Prenom" class="form-control"
+                            value="{{details.prenom}}">
+                        
                     </div>
                     <div class="form-wrapper">
-                        <textarea id="ordonnance" name="ordonnance" placeholder="Ordonnance" rows="10" cols="120"></textarea>
+                        <textarea id="ordonnance" name="ordonnance" placeholder="Ordonnance" rows="10" cols="120"
+                        >
+                        {{details.ordonnance}}
+                        </textarea>
                     </div>
+                    <input type="hidden" name="id" value="{{details.idO}}">
                     <button type="submit">Edit Ordonnance</button>
                 </form>
             </div>

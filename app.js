@@ -503,11 +503,16 @@ db.query(sql, values, (err, result) => {
 });
 });
 // Route to handle updating a job
-app.post('/mord/:id', (req, res) => {
+app.post('/mord', (req, res) => {
 	// Get the job ID from the URL parameters
-const descId = req.params.id;
-const { nom, prenom,ordonnance } = req.body;
+const { id, nom, prenom,ordonnance } = req.body;
 	
+const descId = id; 
+console.log(descId);
+console.log(nom);
+console.log(prenom);
+console.log(ordonnance);
+
            
 // Prepare SQL query with placeholders
 const sql = "UPDATE ordonnace SET nom = ?, prenom = ?, ordonnance = ? WHERE idO = ? ";
@@ -531,10 +536,10 @@ db.query(sql, values, (err, result) => {
 });
 });
 // Route to handle updating a job
-app.post('/mcon/:id', (req, res) => {
+app.post('/mcon', (req, res) => {
 	// Get the job ID from the URL parameters
-const descId = req.params.id;
-const { nom, prenom,dateC } = req.body;
+const { id, nom, prenom,dateC } = req.body;
+const descId = id;
 // Prepare data for insertion
 const values = [ nom, prenom, dateC,descId]; 
 	
@@ -561,17 +566,37 @@ db.query(sql, values, (err, result) => {
 
 app.get('/mrdv/:id', (req, res) => {
   // Render the editRdv.ejs file with the provided id
-  res.render('mrdv', { id: req.params.id });
+  //get the rendez-vous record with the provided id
+
+  db.query('SELECT * FROM rendezvous WHERE idR = ?', [req.params.id], (err, results) => {
+    if (err) {
+      console.error('Error fetching rendez-vous details from database:', err);
+      res.status(500).send('Error fetching rendez-vous details');
+      return;
+    }
+
+    // Render the 'mrdv' template with the fetched data
+    res.render('mrdv', { details: results[0] }); // Assuming there's only one result
+  });
+
 });
 
 // POST endpoint to handle the form submission and update the rendez-vous record
-app.post('/mrdv/:id', (req, res) => {
+app.post('/mrdv', (req, res) => {
   // Retrieve the data from the form submission (nomDoc, prenomDoc, dateR)
-  const { nomDoc, prenomDoc, dateR } = req.body;
-  
-  // Update the rendez-vous record with the provided id using the retrieved data
+  const { idR, dateR } = req.body;
+  //update it 
+  db.query('UPDATE rendezvous SET dateR = ? WHERE idR = ?', [dateR, idR], (err, results) => {
+    if (err) {
+      console.error('Error updating rendez-vous:', err);
+      res.status(500).send('Error updating rendez-vous');
+      return;
+    }
 
-  // Redirect to a page indicating success or back to the edit page with an error message if the update fails
+    // Redirect to the dashboard after successfully updating the rendez-vous record
+    res.redirect('/dashbordrend');
+  });
+
 });
 // Route to handle updating a patient
 app.post('/settings/:id', (req, res) => {
@@ -1053,10 +1078,39 @@ app.get('/forget', (req, res) => {
 	res.render('forget');
 });
 app.get('/mord/:id', (req, res) => {
-	res.render('mord');
+
+  //select ordonnance by id
+
+  db.query('SELECT * FROM ordonnace WHERE idO = ?', [req.params.id], (err, results) => {
+    if (err) {
+      console.error('Error fetching job details from database:', err);
+      res.status(500).send('Error fetching job details');
+      return;
+    }
+
+    console.log(results[0])
+
+    // Render the 'details' template with the fetched data
+    res.render('./mord', { details: results[0] }); // Assuming there's only one result
+  });
+
+	// res.render('mord');
 });
 app.get('/mcon/:id', (req, res) => {
-	res.render('mcon');
+  //get the consultation by id
+  db.query('SELECT * FROM consultation WHERE idCo = ?', [req.params.id], (err, results) => {
+    if (err) {
+      console.error('Error fetching job details from database:', err);
+      res.status(500).send('Error fetching job details');
+      return;
+    }
+
+    console.log(results[0])
+
+    // Render the 'details' template with the fetched data
+    res.render('./mcon', { details: results[0] }); // Assuming there's only one result
+  });
+	// res.render('mcon');
 });
 app.get('/settingsp', (req, res) => {
 	res.render('settingsp');

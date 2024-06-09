@@ -21,9 +21,17 @@
       <div class="job">
         <form action="/mcon" method="post">
           <div class="form-group">
-            <input type="text" id="nom" name="nom" placeholder="Nom" class="form-control">
-            <input type="text" id="prenom" name="prenom" placeholder="Prenom" class="form-control">
-               <input type="text" id="dateC" name="dateC" placeholder="date Consultation" class="form-control">
+            <input type="text" id="nom" name="nom" placeholder="Nom" class="form-control"
+              value="{{details.nom}}">
+            
+            <input type="text" id="prenom" name="prenom" placeholder="Prenom" class="form-control"
+              value="{{details.prenom}}">
+            
+               <input type="date" id="dateC" name="dateC" placeholder="date Consultation" class="form-control"
+              value="{{details.dateC}}">
+
+              <input type="hidden" id="id" name="id" value="{{details.idCo}}">
+               
 </div>
       <button type="submit">Edit Consultation </button>
       </form>
