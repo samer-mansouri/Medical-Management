@@ -8,10 +8,14 @@
     <title>Edit Doctor</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styledesc.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <style>
         body {
             font-family: 'Rubik', sans-serif;
             background-color: #f7f9fc;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .jobs-list-container {
@@ -50,10 +54,39 @@
         button:hover {
             background-color: #0056b3;
         }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        body.dark-mode .form-control {
+            background-color: #333;
+            border-color: #555;
+            color: #ffffff;
+        }
+
+        body.dark-mode button {
+            background-color: #4a90e2;
+        }
+
+        body.dark-mode button:hover {
+            background-color: #357ab8;
+        }
+
+        #dark-mode-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
     </style>
 </head>
 
 <body>
+    <button id="dark-mode-toggle"
+        class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 focus:outline-none">
+        <i id="dark-mode-icon" class="fas fa-moon"></i>
+    </button>
     <div class="jobs-list-container">
         <h2>Edit Doctor</h2>
         <div class="jobs">
@@ -73,6 +106,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('dark-mode-toggle').addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.getElementById('dark-mode-icon');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
 </body>
 
 </html>

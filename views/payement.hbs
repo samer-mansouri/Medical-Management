@@ -1,119 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-               <meta charset="UTF-8">
-               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-               <title>Document</title>
-<style>
-/* Conteneur principal */
-.container {
-    width: 100%;
-    max-width: 32rem; /* équivalent à max-w-lg */
-    margin: 0 auto;
-    padding: 2rem; /* équivalent à p-8 */
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <title>Document</title>
+    <style>
+        /* Conteneur principal */
+        .container {
+            width: 100%;
+            max-width: 32rem; /* équivalent à max-w-lg */
+            margin: 0 auto;
+            padding: 2rem; /* équivalent à p-8 */
+        }
 
-/* Carte de formulaire */
-.card {
-    background-color: #ffffff; /* bg-white */
-    border-radius: 0.5rem; /* rounded-lg */
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
-    padding: 1.5rem; /* p-6 */
-}
+        /* Carte de formulaire */
+        .card {
+            background-color: #ffffff; /* bg-white */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
+            padding: 1.5rem; /* p-6 */
+        }
 
-/* Titre du formulaire */
-.card h2 {
-    font-size: 1.125rem; /* text-lg */
-    font-weight: 500; /* font-medium */
-    margin-bottom: 1.5rem; /* mb-6 */
-}
+        /* Titre du formulaire */
+        .card h2 {
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 500; /* font-medium */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
 
-/* Grille pour les champs de saisie */
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* grid-cols-2 */
-    gap: 1.5rem; /* gap-6 */
-}
+        /* Grille pour les champs de saisie */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* grid-cols-2 */
+            gap: 1.5rem; /* gap-6 */
+        }
 
-/* Champs de saisie */
-.form-grid .input-group {
-    grid-column: span 2;
-}
-@media (min-width: 640px) {
-    .form-grid .input-group {
-        grid-column: span 1; /* sm:col-span-1 */
-    }
-}
+        /* Champs de saisie */
+        .form-grid .input-group {
+            grid-column: span 2;
+        }
+        @media (min-width: 640px) {
+            .form-grid .input-group {
+                grid-column: span 1; /* sm:col-span-1 */
+            }
+        }
 
-.label {
-    display: block;
-    font-size: 0.875rem; /* text-sm */
-    font-weight: 500; /* font-medium */
-    color: #4A5568; /* text-gray-700 */
-    margin-bottom: 0.5rem; /* mb-2 */
-}
+        .label {
+            display: block;
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* font-medium */
+            color: #4A5568; /* text-gray-700 */
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
 
-.input {
-    width: 100%;
-    padding: 0.75rem 1rem; /* py-3 px-4 */
-    border: 1px solid #CBD5E0; /* border-gray-400 */
-    border-radius: 0.5rem; /* rounded-lg */
-    outline: none;
-}
+        .input {
+            width: 100%;
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            border: 1px solid #CBD5E0; /* border-gray-400 */
+            border-radius: 0.5rem; /* rounded-lg */
+            outline: none;
+        }
 
-.input:focus {
-    border-color: #4299E1; /* focus:border-blue-500 */
-}
+        .input:focus {
+            border-color: #4299E1; /* focus:border-blue-500 */
+        }
 
-/* Bouton de soumission */
-.submit-btn {
-    width: 100%;
-    background-color: #48BB78; /* bg-green-500 */
-    color: #ffffff;
-    font-weight: 500; /* font-medium */
-    padding: 0.75rem; /* py-3 */
-    border-radius: 0.5rem; /* rounded-lg */
-    outline: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 2rem; /* mt-8 */
-}
+        /* Bouton de soumission */
+        .submit-btn {
+            width: 100%;
+            background-color: #48BB78; /* bg-green-500 */
+            color: #ffffff;
+            font-weight: 500; /* font-medium */
+            padding: 0.75rem; /* py-3 */
+            border-radius: 0.5rem; /* rounded-lg */
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 2rem; /* mt-8 */
+        }
 
-.submit-btn:hover {
-    background-color: #3182CE; /* hover:bg-blue-600 */
-}
+        .submit-btn:hover {
+            background-color: #3182CE; /* hover:bg-blue-600 */
+        }
 
-</style>
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .dark-mode .card {
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+        .dark-mode .input {
+            background-color: #333;
+            border-color: #555;
+            color: #ffffff;
+        }
+        .dark-mode .input:focus {
+            border-color: #4299E1;
+        }
+        .dark-mode .submit-btn {
+            background-color: #4a90e2;
+        }
+        .dark-mode .submit-btn:hover {
+            background-color: #357ab8;
+        }
+        #dark-mode-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <div class="card">
-        <h2>Payment Information</h2>
-        <form>
-            <div class="form-grid">
-                <div class="input-group">
-                    <label for="card-number" class="label">Card Number</label>
-                    <input type="text" name="card-number" id="card-number" placeholder="0000 0000 0000 0000" class="input">
+    <button id="dark-mode-toggle" class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 focus:outline-none">
+        <i id="dark-mode-icon" class="fas fa-moon"></i>
+    </button>
+    <div class="container">
+        <div class="card">
+            <h2>Payment Information</h2>
+            <form>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="card-number" class="label">Card Number</label>
+                        <input type="text" name="card-number" id="card-number" placeholder="0000 0000 0000 0000" class="input">
+                    </div>
+                    <div class="input-group">
+                        <label for="expiration-date" class="label">Expiration Date</label>
+                        <input type="text" name="expiration-date" id="expiration-date" placeholder="MM / YY" class="input">
+                    </div>
+                    <div class="input-group">
+                        <label for="cvv" class="label">CVV</label>
+                        <input type="text" name="cvv" id="cvv" placeholder="000" class="input">
+                    </div>
+                    <div class="input-group">
+                        <label for="card-holder" class="label">Card Holder</label>
+                        <input type="text" name="card-holder" id="card-holder" placeholder="Full Name" class="input">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label for="expiration-date" class="label">Expiration Date</label>
-                    <input type="text" name="expiration-date" id="expiration-date" placeholder="MM / YY" class="input">
+                <div>
+                    <button type="submit" class="submit-btn">Submit</button>
                 </div>
-                <div class="input-group">
-                    <label for="cvv" class="label">CVV</label>
-                    <input type="text" name="cvv" id="cvv" placeholder="000" class="input">
-                </div>
-                <div class="input-group">
-                    <label for="card-holder" class="label">Card Holder</label>
-                    <input type="text" name="card-holder" id="card-holder" placeholder="Full Name" class="input">
-                </div>
-            </div>
-            <div>
-                <button type="submit" class="submit-btn">Submit</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 
+    <script>
+        document.getElementById('dark-mode-toggle').addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.getElementById('dark-mode-icon');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
 </body>
 </html>

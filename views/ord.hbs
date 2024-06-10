@@ -10,6 +10,87 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styledesc.css" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+  <style>
+    body {
+      font-family: 'Rubik', sans-serif;
+      background-color: #f7f9fc;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .jobs-list-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    body.dark-mode .form-control {
+      background-color: #333;
+      border-color: #555;
+      color: #ffffff;
+    }
+
+    body.dark-mode button {
+      background-color: #4a90e2;
+    }
+
+    body.dark-mode button:hover {
+      background-color: #357ab8;
+    }
+
+      textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            resize: vertical; /* Allow vertical resizing */
+        }
+
+    #dark-mode-toggle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -17,26 +98,21 @@
     <nav>
       <ul>
         <li><a href="/homed">Sérénithérapie</a></li>
-        <li class="hideOnMobile"><a href="/dashbordcon">Dashbord</a></li>
-         <li class="hideOnMobile"><a href="/adddesc">add job</a></li>
+        <li class="hideOnMobile"><a href="/dashbordcon">Dashboard</a></li>
+        <li class="hideOnMobile"><a href="/adddesc">Add Job</a></li>
         <li class="hideOnMobile"><a href="/ord">Ordonnance</a></li>
         <li class="hideOnMobile"><a href="/consultation">Consultation</a></li>
-        <li class="hideOnMobile"><a href="/logout">logout</a></li>
+        <li class="hideOnMobile"><a href="/logout">Logout</a></li>
       </ul>
     </nav>
-    <script>
-      function showSidebar() {
-        const sidebar = document.querySelector('.sidebar')
-        sidebar.style.display = 'flex'
-      }
-      function hideSidebar() {
-        const sidebar = document.querySelector('.sidebar')
-        sidebar.style.display = 'none'
-      }
-    </script>
   </header>
-  <div class="jobs-list-container">
 
+  <button id="dark-mode-toggle"
+    class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 focus:outline-none">
+    <i id="dark-mode-icon" class="fas fa-moon"></i>
+  </button>
+
+  <div class="jobs-list-container">
     <h2>Add New Ordonnance</h2>
     <div class="jobs">
       <div class="job">
@@ -47,20 +123,37 @@
           </div>
           <div class="form-wrapper">
             <label for="ordonnance">Ordonnance:</label>
+            <textarea id="ordonnance" name="ordonnance" rows="10" cols="120"></textarea>
           </div>
-          <textarea id="ordonnance" name="ordonnance" rows="10" cols="120">
-
-            </textarea>
-
+          <button type="submit">Add Ordonnance</button>
+        </form>
       </div>
-
-      <button type="submit">ADD Ordonnance </button>
-      </form>
     </div>
   </div>
-  </div>
 
-  
+  <script>
+    function showSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.style.display = 'flex';
+    }
+
+    function hideSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.style.display = 'none';
+    }
+
+    document.getElementById('dark-mode-toggle').addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode');
+      const icon = document.getElementById('dark-mode-icon');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    });
+  </script>
 </body>
 
 </html>
